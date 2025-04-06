@@ -25,5 +25,5 @@ class Base(AsyncAttrs, DeclarativeBase):
         return f"{cls.__name__.lower()}s"
     
     id: Mapped[uuid.UUID] = mapped_column(
-        UUID, primary_key=True, default_factory=uuid.uuid4,
+        UUID, primary_key=True, default=uuid.uuid4,
     )
