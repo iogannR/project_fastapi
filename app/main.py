@@ -2,7 +2,7 @@ import uvicorn
 from fastapi import FastAPI
 
 from app.api import router as api_router
-
+from app.views import router as views_router
 
 
 def create_app() -> FastAPI:
@@ -11,8 +11,11 @@ def create_app() -> FastAPI:
         description="Сайт со статьями по информационной безопасности.",
     )
     app.include_router(api_router, prefix="/api")
+    app.include_router(views_router)
     
     return app
+
+
 
 
 if __name__ == "__main__":
