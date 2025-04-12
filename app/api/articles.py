@@ -15,7 +15,7 @@ router = APIRouter(tags=["Статьи"])
 @router.get("/", response_model=list[ArticleResponse])
 async def get_all_articles(
     session: Annotated[
-        AsyncSession, Depends(db_connection.session_dependency)
+        AsyncSession, Depends(db_connection.session_dependency),
     ],
 ):
     dao = ArticleDAO(session)
@@ -82,5 +82,5 @@ async def delete_article_by_id(
     dao = ArticleDAO(session)
     await dao.delete_record_by_id(id_)
     return {
-        "message": "Deleted successfully",
+        "message": "deleted successfully",
     }
